@@ -299,6 +299,10 @@ export default {
                 content: {
                     text: "I'll check the current Bitcoin price for you.",
                     action: "GET_PRICE",
+                    params: {
+                        coinIds: "bitcoin",
+                        currency: ["usd"]
+                    }
                 },
             },
             {
@@ -320,6 +324,11 @@ export default {
                 content: {
                     text: "I'll check the current prices with market cap data.",
                     action: "GET_PRICE",
+                    params: {
+                        coinIds: ["bitcoin", "ethereum"],
+                        currency: ["eur"],
+                        include_market_cap: true
+                    }
                 },
             },
             {
@@ -329,5 +338,86 @@ export default {
                 },
             },
         ],
+        [
+            {
+                user: "{{user1}}",
+                content: {
+                    text: "Show me DOGE price with 24h change",
+                },
+            },
+            {
+                user: "{{agent}}",
+                content: {
+                    text: "I'll get Dogecoin's price and 24-hour change.",
+                    action: "GET_PRICE",
+                    params: {
+                        coinIds: "dogecoin",
+                        currency: ["usd"],
+                        include_24hr_change: true
+                    }
+                },
+            },
+            {
+                user: "{{agent}}",
+                content: {
+                    text: "Dogecoin (DOGE): ${{dynamic}} | 24h Change: {{dynamic}}%",
+                },
+            },
+        ],
+        [
+            {
+                user: "{{user1}}",
+                content: {
+                    text: "Get SOL price in USD and EUR with volume",
+                },
+            },
+            {
+                user: "{{agent}}",
+                content: {
+                    text: "I'll fetch Solana's price in both currencies with trading volume.",
+                    action: "GET_PRICE",
+                    params: {
+                        coinIds: "solana",
+                        currency: ["usd", "eur"],
+                        include_24hr_vol: true
+                    }
+                },
+            },
+            {
+                user: "{{agent}}",
+                content: {
+                    text: "Solana (SOL):\nUSD: ${{dynamic}} | 24h Volume: ${{dynamic}}\nEUR: €{{dynamic}} | 24h Volume: €{{dynamic}}",
+                },
+            },
+        ],
+        [
+            {
+                user: "{{user1}}",
+                content: {
+                    text: "Give me complete market data for LINK",
+                },
+            },
+            {
+                user: "{{agent}}",
+                content: {
+                    text: "I'll get all available market data for Chainlink.",
+                    action: "GET_PRICE",
+                    params: {
+                        coinIds: "chainlink",
+                        currency: ["usd"],
+                        include_market_cap: true,
+                        include_24hr_vol: true,
+                        include_24hr_change: true,
+                        include_last_updated_at: true
+                    }
+                },
+            },
+            {
+                user: "{{agent}}",
+                content: {
+                    text: "Chainlink (LINK):\nPrice: ${{dynamic}}\nMarket Cap: ${{dynamic}}\n24h Volume: ${{dynamic}}\n24h Change: {{dynamic}}%\nLast Updated: {{dynamic}}",
+                },
+            },
+        ]
     ] as ActionExample[][],
 } as Action;
