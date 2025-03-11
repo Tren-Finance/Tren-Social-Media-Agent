@@ -204,6 +204,10 @@ export default {
                 content: {
                     text: "I'll check the USDC token price for you.",
                     action: "GET_TOKEN_PRICE_BY_ADDRESS",
+                    params: {
+                        chainId: "ethereum",
+                        tokenAddress: "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48"
+                    }
                 },
             },
             {
@@ -213,5 +217,80 @@ export default {
                 },
             },
         ],
+        [
+            {
+                user: "{{user1}}",
+                content: {
+                    text: "Check MATIC token price on Polygon: 0x0000000000000000000000000000000000001010",
+                },
+            },
+            {
+                user: "{{agent}}",
+                content: {
+                    text: "I'll fetch the MATIC token price on Polygon.",
+                    action: "GET_TOKEN_PRICE_BY_ADDRESS",
+                    params: {
+                        chainId: "polygon-pos",
+                        tokenAddress: "0x0000000000000000000000000000000000001010"
+                    }
+                },
+            },
+            {
+                user: "{{agent}}",
+                content: {
+                    text: "Polygon (MATIC)\nAddress: 0x0000000000000000000000000000000000001010\nChain: polygon-pos\nPrice: {{dynamic}} USD\nMarket Cap: ${{dynamic}} USD",
+                },
+            },
+        ],
+        [
+            {
+                user: "{{user1}}",
+                content: {
+                    text: "What's the price of WETH on Arbitrum? Address: 0x82af49447d8a07e3bd95bd0d56f35241523fbab1",
+                },
+            },
+            {
+                user: "{{agent}}",
+                content: {
+                    text: "I'll look up the WETH price on Arbitrum.",
+                    action: "GET_TOKEN_PRICE_BY_ADDRESS",
+                    params: {
+                        chainId: "arbitrum-one",
+                        tokenAddress: "0x82af49447d8a07e3bd95bd0d56f35241523fbab1"
+                    }
+                },
+            },
+            {
+                user: "{{agent}}",
+                content: {
+                    text: "Wrapped Ether (WETH)\nAddress: 0x82af49447d8a07e3bd95bd0d56f35241523fbab1\nChain: arbitrum-one\nPrice: {{dynamic}} USD\nMarket Cap: ${{dynamic}} USD",
+                },
+            },
+        ],
+        [
+            {
+                user: "{{user1}}",
+                content: {
+                    text: "Price of USDT on BSC: 0x55d398326f99059ff775485246999027b3197955",
+                },
+            },
+            {
+                user: "{{agent}}",
+                content: {
+                    text: "I'll get the USDT price on Binance Smart Chain.",
+                    action: "GET_TOKEN_PRICE_BY_ADDRESS",
+                    params: {
+                        chainId: "binance-smart-chain",
+                        tokenAddress: "0x55d398326f99059ff775485246999027b3197955"
+                    }
+                },
+            },
+            {
+                user: "{{agent}}",
+                content: {
+                    text: "Tether USD (USDT)\nAddress: 0x55d398326f99059ff775485246999027b3197955\nChain: binance-smart-chain\nPrice: {{dynamic}} USD\nMarket Cap: ${{dynamic}} USD",
+                },
+            },
+        ]
     ] as ActionExample[][],
 } as Action;

@@ -308,5 +308,71 @@ export default {
                 },
             },
         ],
+        [
+            {
+                user: "{{user1}}",
+                content: {
+                    text: "Which coins have the highest volume today?",
+                },
+            },
+            {
+                user: "{{agent}}",
+                content: {
+                    text: "Let me check the trading volumes for you.",
+                    action: "GET_MARKETS",
+                    params: { sort: "volume_desc" }
+                },
+            },
+            {
+                user: "{{agent}}",
+                content: {
+                    text: "Here are the most actively traded cryptocurrencies in the last 24h:\n{{dynamic}}",
+                },
+            },
+        ],
+        [
+            {
+                user: "{{user1}}",
+                content: {
+                    text: "What are the biggest gainers in the last 24h?",
+                },
+            },
+            {
+                user: "{{agent}}",
+                content: {
+                    text: "I'll check which coins have gained the most in the past day.",
+                    action: "GET_MARKETS",
+                    params: { sort: "price_change_24h_desc" }
+                },
+            },
+            {
+                user: "{{agent}}",
+                content: {
+                    text: "Here are today's top performing cryptocurrencies:\n{{dynamic}}",
+                },
+            },
+        ],
+        [
+            {
+                user: "{{user1}}",
+                content: {
+                    text: "Show me DeFi tokens ranked by market cap",
+                },
+            },
+            {
+                user: "{{agent}}",
+                content: {
+                    text: "I'll fetch the top DeFi tokens for you.",
+                    action: "GET_MARKETS",
+                    params: { category: "decentralized-finance-defi" }
+                },
+            },
+            {
+                user: "{{agent}}",
+                content: {
+                    text: "Here are the leading DeFi tokens by market cap:\n{{dynamic}}",
+                },
+            },
+        ]
     ] as ActionExample[][],
 } as Action;

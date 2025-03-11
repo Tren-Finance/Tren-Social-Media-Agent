@@ -181,5 +181,74 @@ export default {
                 },
             },
         ],
+        [
+            {
+                user: "{{user1}}",
+                content: {
+                    text: "Show me today's new listings",
+                },
+            },
+            {
+                user: "{{agent}}",
+                content: {
+                    text: "Let me fetch today's newly listed tokens.",
+                    action: "GET_NEW_COINS",
+                    params: { timeframe: "24h" }
+                },
+            },
+            {
+                user: "{{agent}}",
+                content: {
+                    text: "Here are the tokens listed in the last 24 hours:\n{{dynamic}}",
+                },
+            },
+        ],
+        [
+            {
+                user: "{{user1}}",
+                content: {
+                    text: "Any new DeFi tokens listed this week?",
+                },
+            },
+            {
+                user: "{{agent}}",
+                content: {
+                    text: "I'll check for new DeFi token listings from the past week.",
+                    action: "GET_NEW_COINS",
+                    params: { 
+                        timeframe: "7d",
+                        category: "defi" 
+                    }
+                },
+            },
+            {
+                user: "{{agent}}",
+                content: {
+                    text: "Here are the new DeFi tokens listed in the past 7 days:\n{{dynamic}}",
+                },
+            },
+        ],
+        [
+            {
+                user: "{{user1}}",
+                content: {
+                    text: "Which new coins have the highest trading volume?",
+                },
+            },
+            {
+                user: "{{agent}}",
+                content: {
+                    text: "I'll find the most actively traded new listings.",
+                    action: "GET_NEW_COINS",
+                    params: { sort: "volume_desc" }
+                },
+            },
+            {
+                user: "{{agent}}",
+                content: {
+                    text: "Here are the most traded newly listed coins:\n{{dynamic}}",
+                },
+            },
+        ]
     ] as ActionExample[][],
 } as Action;

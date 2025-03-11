@@ -222,6 +222,10 @@ export default {
                 content: {
                     text: "I'll check the trending cryptocurrencies for you.",
                     action: "GET_TRENDING",
+                    params: {
+                        include_nfts: false,
+                        include_categories: false
+                    }
                 },
             },
             {
@@ -241,16 +245,70 @@ export default {
             {
                 user: "{{agent}}",
                 content: {
-                    text: "I'll fetch the current trending cryptocurrencies.",
+                    text: "I'll fetch the current trending data across all categories.",
                     action: "GET_TRENDING",
+                    params: {
+                        include_nfts: true,
+                        include_categories: true
+                    }
                 },
             },
             {
                 user: "{{agent}}",
                 content: {
-                    text: "Here are the trending cryptocurrencies:\n{{dynamic}}",
+                    text: "Trending Coins:\n1. Pepe (PEPE) - Rank #95\n2. Wojak (WOJAK)\n\nTrending NFTs:\n1. Bored Ape Yacht Club\n2. CryptoPunks\n\nTrending Categories:\n1. Meme Coins\n2. AI & Big Data\n{{dynamic}}",
                 },
             },
         ],
+        [
+            {
+                user: "{{user1}}",
+                content: {
+                    text: "What NFT collections are trending?",
+                },
+            },
+            {
+                user: "{{agent}}",
+                content: {
+                    text: "I'll check the trending NFT collections.",
+                    action: "GET_TRENDING",
+                    params: {
+                        include_nfts: true,
+                        include_categories: false
+                    }
+                },
+            },
+            {
+                user: "{{agent}}",
+                content: {
+                    text: "Trending NFTs:\n1. Azuki\n2. DeGods\n3. y00ts\n{{dynamic}}",
+                },
+            },
+        ],
+        [
+            {
+                user: "{{user1}}",
+                content: {
+                    text: "Which crypto categories are popular now?",
+                },
+            },
+            {
+                user: "{{agent}}",
+                content: {
+                    text: "I'll fetch the trending crypto categories.",
+                    action: "GET_TRENDING",
+                    params: {
+                        include_nfts: false,
+                        include_categories: true
+                    }
+                },
+            },
+            {
+                user: "{{agent}}",
+                content: {
+                    text: "Trending Categories:\n1. DeFi\n2. Layer 2\n3. Gaming\n4. Zero Knowledge\n{{dynamic}}",
+                },
+            },
+        ]
     ] as ActionExample[][],
 } as Action;

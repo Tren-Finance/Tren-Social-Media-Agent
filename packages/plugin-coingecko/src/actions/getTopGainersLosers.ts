@@ -219,12 +219,17 @@ export default {
                 content: {
                     text: "I'll check the top gainers and losers for you.",
                     action: "GET_TOP_GAINERS_LOSERS",
+                    params: {
+                        vs_currency: "usd",
+                        duration: "24h",
+                        top_coins: "1000"
+                    }
                 },
             },
             {
                 user: "{{agent}}",
                 content: {
-                    text: "Here are the top gainers and losers:\nTop Gainers:\n1. Bitcoin (BTC) | $45,000 | +5.2% | Rank #1\n{{dynamic}}",
+                    text: "Here are the top gainers and losers:\nTop Gainers:\n1. Bitcoin (BTC) | $45,000 | +5.2% | Rank #1\n{{dynamic}}\n\nTop Losers:\n1. Ethereum (ETH) | $2,800 | -3.1% | Rank #2\n{{dynamic}}",
                 },
             },
         ],
@@ -232,22 +237,79 @@ export default {
             {
                 user: "{{user1}}",
                 content: {
-                    text: "Show me the best and worst performing crypto today",
+                    text: "Show me the weekly top performers and losers",
                 },
             },
             {
                 user: "{{agent}}",
                 content: {
-                    text: "I'll fetch the current top movers in the crypto market.",
+                    text: "I'll fetch the best and worst performing coins over the past week.",
                     action: "GET_TOP_GAINERS_LOSERS",
+                    params: {
+                        vs_currency: "usd",
+                        duration: "7d",
+                        top_coins: "1000"
+                    }
                 },
             },
             {
                 user: "{{agent}}",
                 content: {
-                    text: "Here are today's best and worst performers:\n{{dynamic}}",
+                    text: "7-day performance:\nTop Gainers:\n1. PEPE (PEPE) | $0.000003 | +150.2% | Rank #95\n{{dynamic}}\n\nTop Losers:\n1. WOJAK (WOJAK) | $0.000001 | -45.8%\n{{dynamic}}",
                 },
             },
         ],
+        [
+            {
+                user: "{{user1}}",
+                content: {
+                    text: "What coins are pumping in the last hour?",
+                },
+            },
+            {
+                user: "{{agent}}",
+                content: {
+                    text: "I'll check the biggest movers in the past hour.",
+                    action: "GET_TOP_GAINERS_LOSERS",
+                    params: {
+                        vs_currency: "usd",
+                        duration: "1h",
+                        top_coins: "1000"
+                    }
+                },
+            },
+            {
+                user: "{{agent}}",
+                content: {
+                    text: "1-hour performance:\nTop Gainers:\n1. SOL (SOL) | $98.45 | +12.3% | Rank #5\n{{dynamic}}\n\nTop Losers:\n1. AVAX (AVAX) | $35.20 | -8.1% | Rank #11\n{{dynamic}}",
+                },
+            },
+        ],
+        [
+            {
+                user: "{{user1}}",
+                content: {
+                    text: "Show me monthly performance in EUR",
+                },
+            },
+            {
+                user: "{{agent}}",
+                content: {
+                    text: "I'll get the top gainers and losers for the past 30 days in EUR.",
+                    action: "GET_TOP_GAINERS_LOSERS",
+                    params: {
+                        vs_currency: "eur",
+                        duration: "30d",
+                        top_coins: "1000"
+                    }
+                },
+            },
+            {
+                user: "{{agent}}",
+                content: {
+                    text: "30-day performance (EUR):\nTop Gainers:\n1. BNB (BNB) | €380.25 | +45.2% | Rank #4\n{{dynamic}}\n\nTop Losers:\n1. XRP (XRP) | €0.55 | -15.3% | Rank #6\n{{dynamic}}",
+                },
+            },
+        ]
     ] as ActionExample[][],
 } as Action;
