@@ -10,7 +10,8 @@ services:
             - eliza:/app/packages/client-twitter/src/tweetcache
             - eliza:/app/db.sqlite
         environment:
-            - OPENAI_API_KEY=
+            - OPENAI_API_KEY=     # OpenAI API key, starting with sk-
+            - COINGECKO_PRO_API_KEY=
             - REDPILL_API_KEY=
             - ELEVENLABS_XI_API_KEY=
             - ELEVENLABS_MODEL_ID=eleven_multilingual_v2

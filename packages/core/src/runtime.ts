@@ -55,7 +55,7 @@ import {
 } from "./types.ts";
 import { stringToUuid } from "./uuid.ts";
 import { glob } from "glob";
-import { existsSync } from "fs";
+import { existsSync, mkdirSync } from "fs";
 /**
  * Represents the runtime environment for an agent, handling message processing,
  * action registration, and interaction with external services like OpenAI and Supabase.
@@ -840,10 +840,9 @@ export class AgentRuntime implements IAgentRuntime {
             // Check if directory exists
             const dirExists = existsSync(dirPath);
             if (!dirExists) {
-                elizaLogger.error(
-                    `[RAG Directory] Directory does not exist: ${sanitizedDir}`,
-                );
-                return;
+                // Create the directory if it doesn't exist
+                elizaLogger.info(`[RAG Directory] Creating directory: ${sanitizedDir}`);
+                mkdirSync(dirPath, { recursive: true });
             }
 
             elizaLogger.debug(`[RAG Directory] Searching in: ${dirPath}`);
