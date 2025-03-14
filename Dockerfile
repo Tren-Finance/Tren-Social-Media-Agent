@@ -67,12 +67,6 @@ RUN npm install -g pnpm@9.15.4 && \
     make install && \
     cd .. && \
     rm -rf pgvector-0.5.1 vector.tar.gz && \
-    # Create extension directory if it doesn't exist
-    mkdir -p /usr/share/postgresql/17/extension && \
-    # Copy the extension files to the correct location
-    cp /usr/lib/postgresql/17/lib/vector.so /usr/lib/postgresql/17/lib/ && \
-    cp /usr/share/postgresql/17/extension/vector.control /usr/share/postgresql/17/extension/ && \
-    cp /usr/share/postgresql/17/extension/vector--*.sql /usr/share/postgresql/17/extension/ && \
     # Clean up
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
