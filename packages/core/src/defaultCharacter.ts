@@ -408,7 +408,7 @@ export const defaultCharacter: Character = {
     },
     knowledge: [
         {
-            "directory": "./rag",
+            "directory": "knowledge/rag",
             "shared": false
         }
     ],

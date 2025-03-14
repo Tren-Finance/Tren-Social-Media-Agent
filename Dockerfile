@@ -52,7 +52,28 @@ RUN npm install -g pnpm@9.15.4 && \
     apt-get install -y \
     git \
     python3 \
-    ffmpeg && \
+    ffmpeg \
+    postgresql-server-dev-all \
+    postgresql-contrib \
+    build-essential \
+    curl \
+    postgresql-15 \
+    postgresql-contrib-15 && \
+    # Install pgvector
+    curl -L -o vector.tar.gz https://github.com/pgvector/pgvector/archive/refs/tags/v0.5.1.tar.gz && \
+    tar -xzvf vector.tar.gz && \
+    cd pgvector-0.5.1 && \
+    make && \
+    make install && \
+    cd .. && \
+    rm -rf pgvector-0.5.1 vector.tar.gz && \
+    # Create extension directory if it doesn't exist
+    mkdir -p /usr/share/postgresql/17/extension && \
+    # Copy the extension files to the correct location
+    cp /usr/lib/postgresql/17/lib/vector.so /usr/lib/postgresql/17/lib/ && \
+    cp /usr/share/postgresql/17/extension/vector.control /usr/share/postgresql/17/extension/ && \
+    cp /usr/share/postgresql/17/extension/vector--*.sql /usr/share/postgresql/17/extension/ && \
+    # Clean up
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
